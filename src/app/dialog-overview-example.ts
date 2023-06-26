@@ -20,8 +20,6 @@ import { DialogOverviewExampleDialog } from './dialog-overview-dialog';
   templateUrl: 'dialog-overview-example.html',
 })
 export class DialogOverviewExample {
-  //animal: string;
-  //name: string;
   cpData: DialogData;
   constructor(public dialog: MatDialog) {}
 
@@ -53,5 +51,9 @@ export class DialogOverviewExample {
       console.log('The dialog was closed');
       this.cpData = result;
     });
+  }
+
+  json(data: any) {
+    return JSON.stringify(data);
   }
 }

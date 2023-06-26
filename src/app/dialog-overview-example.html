@@ -2,13 +2,13 @@
   <li>
     <mat-form-field appearance="fill">
       <mat-label>What's your name?</mat-label>
-      <input matInput value="some_value">
+      <input matInput value="some_value" />
     </mat-form-field>
   </li>
   <li>
     <button mat-raised-button (click)="openDialog()">Pick one</button>
   </li>
-  <li>You chose:</li>
+  <li>You chose: {{json(cpData)}}</li>
 </ol>
 
 <!-- Copyright 2023 Google LLC. All Rights Reserved.

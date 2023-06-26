@@ -41,10 +41,6 @@ export class DialogOverviewExampleDialog {
   BCCs: string[] = [];
   selectedFiles: File[] = [];
 
-  //announcer = inject(LiveAnnouncer);
-  //emailForm: FormGroup;
-  //matcher = new ErrorStateMatcher();
-
   attachments: string[] = [];
   emailForm: FormGroup;
 
@@ -57,9 +53,9 @@ export class DialogOverviewExampleDialog {
       objectControl: ['', [Validators.required]],
       commentControl: ['', [Validators.required]],
     });
-    //this.channel = data.channel;
-    //this.containerIds = data.loaderContainerIds;
-    //this.requests = data.requests;
+    this.channel = data.channel;
+    this.containerIds = data.loaderContainerIds;
+    this.requests = data.requests;
   }
 
   cancel(): void {
@@ -122,10 +118,32 @@ export class DialogOverviewExampleDialog {
   }
 
   validate() {
-    console.log('validate button clicked ...');
+    /* 
+      export interface DialogData {
+  CCs: string[];
+  BCCs: string[];
+  object: string;
+  comment: string;
+  selectedFiles: File[];
+  channel: Channel;
+  loaderContainerIds: string[];
+  requests: RequestModel[];
+}
+
+    */
+    //console.log('validate button clicked ...');
+    this.data.CCs = this.CCs;
+    this.data.BCCs = this.BCCs;
+    this.data.selectedFiles = this.selectedFiles;
+    this.data.object = this.emailForm.get('objectControl')?.value;
+    this.data.comment = this.emailForm.get('commentControl')?.value;
   }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  json(data: any) {
+    return JSON.stringify(data);
   }
 }
