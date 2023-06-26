@@ -4,8 +4,7 @@
     <form class="example-form" [formGroup]="emailForm">
       <mat-form-field class="example-chip-list">
         <mat-label>CC</mat-label>
-        <mat-chip-list #chipGridCC aria-label="enter CC"
-          >
+        <mat-chip-list #chipGridCC aria-label="enter CC">
           <mat-chip *ngFor="let cc of CCs" (removed)="removeAddress('cc',cc)">
             {{cc}}
             <button matChipRemove [attr.aria-label]="'remove ' + cc">
@@ -95,9 +94,9 @@
     type="submit"
     [mat-dialog-close]="data"
     (click)="validate()"
+    [disabled]="emailForm.invalid"
     cdkFocusInitial
   >
     Ok
   </button>
 </div>
-
