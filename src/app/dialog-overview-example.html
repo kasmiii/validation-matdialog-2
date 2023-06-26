@@ -2,17 +2,14 @@
   <li>
     <mat-form-field appearance="fill">
       <mat-label>What's your name?</mat-label>
-      <input matInput [(ngModel)]="name">
+      <input matInput value="some_value">
     </mat-form-field>
   </li>
   <li>
     <button mat-raised-button (click)="openDialog()">Pick one</button>
   </li>
-  <li *ngIf="animal">
-    You chose: <i>{{animal}}</i>
-  </li>
+  <li>You chose:</li>
 </ol>
-
 
 <!-- Copyright 2023 Google LLC. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that

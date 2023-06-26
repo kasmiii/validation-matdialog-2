@@ -4,12 +4,13 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
+import { DialogData } from './dialog-data-model';
 import { DialogOverviewExampleDialog } from './dialog-overview-dialog';
 
-export interface DialogData {
+/*export interface DialogData {
   animal: string;
   name: string;
-}
+}*/
 
 /**
  * @title Dialog Overview
@@ -19,39 +20,38 @@ export interface DialogData {
   templateUrl: 'dialog-overview-example.html',
 })
 export class DialogOverviewExample {
-  animal: string;
-  name: string;
-
+  //animal: string;
+  //name: string;
+  cpData: DialogData;
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
+    this.cpData = {
+      CCs: [],
+      BCCs: [],
+      object: '',
+      comment: '',
+      selectedFiles: [],
+      channel: {
+        id: 'some_id',
+        name: 'channel_name',
+      },
+      loaderContainerIds: [],
+      requests: [
+        {
+          id: 'string',
+          email_customer: 'string',
+        },
+      ],
+    };
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '250px',
-      data: { name: this.name, animal: this.animal },
+      data: { ...this.cpData },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-      this.animal = result;
+      this.cpData = result;
     });
   }
 }
-
-/*@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-overview-example-dialog.html',
-})
-export class DialogOverviewExampleDialog {
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}
-*/
-/**  Copyright 2023 Google LLC. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at https://angular.io/license */

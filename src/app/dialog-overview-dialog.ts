@@ -1,9 +1,9 @@
-import { Component, Inject } from "@angular/core";
+import { Component, Inject } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { MatChipInputEvent } from "@angular/material/chips";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { DialogData } from "./dialog-overview-example";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogData } from './dialog-data-model';
 
 export interface Channel {
   id: string;
@@ -19,9 +19,7 @@ export interface RequestModel {
   templateUrl: 'dialog-overview-example-dialog.html',
   styleUrls: ['dialog-overview-example-dialog.css'],
 })
-export class DialogOverviewExampleDialog{
-
-
+export class DialogOverviewExampleDialog {
   //let param = this.resolve();
 
   public dismiss: Function;
