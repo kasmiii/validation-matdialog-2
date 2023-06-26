@@ -3,10 +3,11 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {MaterialExampleModule} from '../material.module';
-import {DialogOverviewExample, DialogOverviewExampleDialog} from './dialog-overview-example';
+import {DialogOverviewExample} from './dialog-overview-example';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import {HttpClientModule} from '@angular/common/http';
+import { DialogOverviewExampleDialog } from './dialog-overview-dialog';
 
 @NgModule({
   declarations: [DialogOverviewExample, DialogOverviewExampleDialog],

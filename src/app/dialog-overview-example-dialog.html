@@ -1,17 +1,103 @@
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field appearance="fill">
-    <mat-label>Favorite Animal</mat-label>
-    <input matInput [(ngModel)]="data.animal">
-  </mat-form-field>
+<h1 mat-dialog-title>Hi</h1>
+<div>
+  <div mat-dialog-content>
+    <form class="example-form" [formGroup]="emailForm">
+      <mat-form-field class="example-chip-list">
+        <mat-label>CC</mat-label>
+        <mat-chip-list #chipGridCC aria-label="enter CC"
+          >
+          <mat-chip *ngFor="let cc of CCs" (removed)="removeAddress('cc',cc)">
+            {{cc}}
+            <button matChipRemove [attr.aria-label]="'remove ' + cc">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input
+            placeholder="Nouveau CC"
+            [matChipInputFor]="chipGridCC"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlurCC"
+            (matChipInputTokenEnd)="addAddress('cc',$event)"
+          />
+        </mat-chip-list>
+      </mat-form-field>
+
+      <mat-form-field class="example-chip-list">
+        <mat-label>BCC</mat-label>
+        <mat-chip-list #chipGridBCC aria-label="Enter BCC">
+          <mat-chip
+            *ngFor="let bcc of BCCs"
+            (removed)="removeAddress('bcc',bcc)"
+          >
+            {{bcc}}
+            <button matChipRemove [attr.aria-label]="'remove ' + bcc">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input
+            placeholder="Nouveau BCC"
+            [matChipInputFor]="chipGridBCC"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlurBCC"
+            (matChipInputTokenEnd)="addAddress('bcc',$event)"
+          />
+        </mat-chip-list>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Object</mat-label>
+        <input matInput formControlName="objectControl" />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Commentaire</mat-label>
+        <textarea matInput formControlName="commentControl"></textarea>
+      </mat-form-field>
+
+      <div>
+        <input
+          type="file"
+          (change)="onFileSelected($event)"
+          #fileInput
+          style="display: none"
+          multiple
+        />
+        <button
+          mat-raised-button
+          mat-icon-button
+          color="primary"
+          (click)="fileInput.click()"
+        >
+          <mat-icon>attach_file</mat-icon>
+        </button>
+      </div>
+
+      <mat-chip-list>
+        <mat-chip
+          *ngFor="let file of selectedFiles"
+          [removable]="true"
+          (removed)="removeFile(file)"
+        >
+          {{ file.name }}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </form>
+  </div>
 </div>
+
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button
+    mat-button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [mat-dialog-close]="data"
+    (click)="validate()"
+    cdkFocusInitial
+  >
+    Ok
+  </button>
 </div>
 
-
-<!-- Copyright 2023 Google LLC. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at https://angular.io/license -->
