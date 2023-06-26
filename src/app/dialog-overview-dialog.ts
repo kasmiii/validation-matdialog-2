@@ -5,6 +5,12 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogData } from './dialog-data-model';
 
+import { MaterialExampleModule } from '../material.module';
+import { DialogOverviewExample } from './dialog-overview-example';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
+
 export interface Channel {
   id: string;
   name: string;
@@ -18,6 +24,12 @@ export interface RequestModel {
   //selector: 'dialog-overview-example-dialog',
   templateUrl: 'dialog-overview-example-dialog.html',
   styleUrls: ['dialog-overview-example-dialog.css'],
+  //standalone: true,
+  // imports:[
+  //   FormsModule,
+  //   MaterialExampleModule,
+  //   ReactiveFormsModule,
+  // ]
 })
 export class DialogOverviewExampleDialog {
   //let param = this.resolve();
