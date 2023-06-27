@@ -43,7 +43,7 @@ export class DialogOverviewExample {
       ],
     };
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
+      width: '500px',
       data: { ...this.cpData },
     });
 
